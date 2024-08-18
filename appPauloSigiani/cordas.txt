@@ -1,0 +1,10 @@
+Violino;101;Cordas;4;false
+Violão;102;Cordas;6;false
+Violoncelo;103;Cordas;4;false
+Contra-baixo;104;Cordas;4;false
+Guitarra;105;Cordas;6;true
+Harpa;106;Cordas;47;false
+Baixo;107;Cordas;4;true
+Viola;108;Cordas;10;false
+Banjo;109;Cordas;5;false
+Bandolim;110;Cordas;8;false

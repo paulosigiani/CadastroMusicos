@@ -1,0 +1,10 @@
+Flauta;201;Sopro;Metais;Soprano
+Clarinete;202;Sopro;Madeiras;Soprano
+Saxofone Alto;203;Sopro;Metais;Alto
+Trompa;204;Sopro;Metais;Tenor
+Trompete;205;Sopro;Metais;Soprano
+Trombone;206;Sopro;Metais;Tenor
+Fagote;207;Sopro;Madeiras;Barítono
+Oboé;208;Sopro;Madeiras;Soprano
+Tuba;209;Sopro;Metais;Baixo
+Corneta;210;Sopro;Metais;Soprano
