@@ -1,8 +1,11 @@
 package br.edu.infnet.appPauloSigiani.model.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Musico {
+
+    private Integer id;
 
     private String nome;
     private int idade;
@@ -12,15 +15,28 @@ public class Musico {
 
     private List<Instrumento> instrumentos;
 
+    public Musico() {
+        instrumentos = new ArrayList<Instrumento>();
+    }
+
     @Override
     public String toString() {
-        return "[nome=" + nome + 
+        return "[id=" + id+
+              ", nome=" + nome + 
               ", idade=" + idade + 
               ", cpf=" + cpf + ", sexo=" + sexo + 
               ", salario=" + salario + 
-              ", instrumentos=" + instrumentos + "]";
+              ", instrumentos=" + instrumentos.size() + "]";
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    
     public String getNome() {
         return nome;
     }

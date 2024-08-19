@@ -1,17 +1,29 @@
 package br.edu.infnet.appPauloSigiani.model.domain;
 
 public abstract class Instrumento {
+
+    private Integer id;
+
     private String nome;
     private int codigo;
     private String tipo;
 
     @Override
     public String toString() {
-        return "nome=" + nome + ", " +
-               "codigo=" + codigo + ", " +
-               "tipo=" + tipo;
+        return "id=" + id +
+             ", nome=" + nome +
+             ", codigo=" + codigo +
+             ", tipo=" + tipo;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    
     public String getNome() {
         return nome;
     }
