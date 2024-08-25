@@ -22,4 +22,16 @@ public class SoproService {
     public Collection<Sopro> obterLista () {
         return mapa.values();            
     }
+
+    public Sopro obterPorId(Integer id) {
+        return mapa.get(id);
+    }
+
+    public void excluir(Integer id) {
+        mapa.remove(id);
+    }
+
+    public int obterQuantidade() {
+        return mapa.size();
+    }
 }

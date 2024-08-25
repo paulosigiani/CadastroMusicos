@@ -22,4 +22,16 @@ public class MusicoService {
     public Collection<Musico> obterLista () {
         return mapa.values();            
     }
+
+    public Musico obterPorId(Integer id) {
+        return mapa.get(id);
+    }
+
+    public void excluir(Integer id) {
+        mapa.remove(id);
+    }
+
+    public int obterQuantidade() {
+        return mapa.size();
+    }
 }

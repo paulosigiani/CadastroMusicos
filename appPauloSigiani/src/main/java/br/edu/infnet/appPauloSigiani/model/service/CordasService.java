@@ -22,4 +22,16 @@ public class CordasService {
     public Collection<Cordas> obterLista () {
         return mapa.values();            
     }
+
+    public Cordas obterPorId(Integer id) {
+        return mapa.get(id);
+    }
+
+    public void excluir(Integer id) {
+        mapa.remove(id);
+    }
+
+    public int obterQuantidade() {
+        return mapa.size();
+    }
 }
