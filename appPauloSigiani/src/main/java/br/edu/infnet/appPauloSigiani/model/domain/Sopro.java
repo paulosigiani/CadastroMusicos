@@ -1,7 +1,17 @@
 package br.edu.infnet.appPauloSigiani.model.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+
+@Entity
+@Table(name = "instrumento_de_sopro")
 public class Sopro extends Instrumento {
+    
+    @NotBlank(message = "É necessário informar o material do instrumento.")
     private String material;
+
+    @NotBlank(message = "É necessário informar a altura tonal do instrumento.")
     private String alturaTonal;
 
     @Override

@@ -1,7 +1,5 @@
 package br.edu.infnet.appPauloSigiani.controller;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +19,7 @@ public class SoproController {
     SoproService soproService;
 
     @GetMapping(value = "sopro/listar")
-    public Collection<Sopro> obterLista() {
+    public Iterable<Sopro> obterLista() {
         return soproService.obterLista();
     }
     

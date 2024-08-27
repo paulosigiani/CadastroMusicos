@@ -1,37 +1,45 @@
 package br.edu.infnet.appPauloSigiani.model.service;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import br.edu.infnet.appPauloSigiani.model.domain.Sopro;
+import br.edu.infnet.appPauloSigiani.model.repository.SoproRepository;
 
 @Service
 public class SoproService {
 
-    private Map<Integer, Sopro> mapa = new HashMap<Integer, Sopro>();
-    private Integer id = 0;
+    @Autowired
+    private SoproRepository soproRepository;
 
     public void incluir (Sopro sopro) {
-        sopro.setId(++id);
-        mapa.put(sopro.getId(), sopro);
+        soproRepository.save(sopro);
     }
 
-    public Collection<Sopro> obterLista () {
-        return mapa.values();            
+    public Iterable<Sopro> obterLista () {
+        return soproRepository.findAll(); 
+    }
+
+    public Iterable<Sopro> obterLista (String orderBy) {
+        return soproRepository.findAll(Sort.by(Sort.Direction.ASC, orderBy));       
     }
 
     public Sopro obterPorId(Integer id) {
-        return mapa.get(id);
+        return soproRepository.findById(id).orElse(null);
     }
 
     public void excluir(Integer id) {
-        mapa.remove(id);
+        soproRepository.deleteById(id);
     }
 
-    public int obterQuantidade() {
-        return mapa.size();
+    public long obterQuantidade() {
+        return soproRepository.count();
+    }
+
+    public Collection<Sopro> obterPorMaterial(String material) {
+        return soproRepository.findByMaterial(material);
     }
 }

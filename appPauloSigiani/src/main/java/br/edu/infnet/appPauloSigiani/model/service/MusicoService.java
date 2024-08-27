@@ -1,37 +1,43 @@
 package br.edu.infnet.appPauloSigiani.model.service;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import br.edu.infnet.appPauloSigiani.model.domain.Musico;
+import br.edu.infnet.appPauloSigiani.model.repository.MusicoRepository;
 
 @Service
 public class MusicoService {
 
-    private Map<Integer, Musico> mapa = new HashMap<Integer, Musico>();
-    private Integer id = 0;
+    @Autowired
+    private MusicoRepository musicoRepository;
 
     public void incluir (Musico musico) {
-        musico.setId(++id);
-        mapa.put(musico.getId(), musico);
+        musicoRepository.save(musico);
     }
 
-    public Collection<Musico> obterLista () {
-        return mapa.values();            
+    public Iterable<Musico> obterLista () {
+        return musicoRepository.findAll();           
+    }
+
+    public Iterable<Musico> obterLista (String orderBy) {
+        return musicoRepository.findAll(Sort.by(Sort.Direction.ASC, orderBy));       
     }
 
     public Musico obterPorId(Integer id) {
-        return mapa.get(id);
+        return musicoRepository.findById(id).orElse(null);
     }
 
     public void excluir(Integer id) {
-        mapa.remove(id);
+        musicoRepository.deleteById(id);
     }
 
-    public int obterQuantidade() {
-        return mapa.size();
+    public long obterQuantidade() {
+        return musicoRepository.count();
+    }
+
+    public Musico obterPorCpf(String cpf) {
+        return musicoRepository.findByCpf(cpf);
     }
 }

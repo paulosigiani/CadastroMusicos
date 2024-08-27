@@ -6,18 +6,25 @@ import java.io.FileReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.appPauloSigiani.model.domain.Cordas;
+import br.edu.infnet.appPauloSigiani.model.domain.Endereco;
 import br.edu.infnet.appPauloSigiani.model.domain.Musico;
 import br.edu.infnet.appPauloSigiani.model.domain.Sopro;
+import br.edu.infnet.appPauloSigiani.model.service.EndercoService;
 import br.edu.infnet.appPauloSigiani.model.service.MusicoService;
 
 @Component
+@Order(1)
 public class MusicoLoader implements ApplicationRunner {
 
     @Autowired
     MusicoService musicoService;
+
+    @Autowired
+    EndercoService endercoService;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -44,6 +51,9 @@ public class MusicoLoader implements ApplicationRunner {
                     musico.setCpf(campos[3]);
                     musico.setSexo(campos[4]);
                     musico.setSalario(Float.valueOf(campos[5]));
+                    
+                    Endereco endereco = endercoService.obterPorCep(campos[6]);
+                    musico.setEndereco(endereco);
 
                     musicoService.incluir(musico);
 
@@ -72,7 +82,7 @@ public class MusicoLoader implements ApplicationRunner {
                     sopro.setAlturaTonal(campos[5]);
 
                     musico.getInstrumentos().add(sopro);
-                            
+            
                     break;
             
                 default:
